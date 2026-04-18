@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tu vois ce que je veux dire — Ressources</title>
+<style>
+:root {
+  --bg-main: #120019;
+  --bg-accueil: #202727;
+  --bg-panel: rgba(12, 2, 22, 0.88);
+  --bg-panel-soft: rgba(18, 6, 30, 0.68);
+  --bg-button: rgba(8, 0, 18, 0.62);
+  --text-main: #f5efff;
+  --text-soft: rgba(255, 255, 255, 0.76);
+  --line: rgba(228, 214, 255, 0.95);
+  --line-soft: rgba(228, 214, 255, 0.3);
+  --shadow: 0 0 18px rgba(184, 145, 255, 0.28), 0 0 36px rgba(126, 62, 255, 0.14);
+  --shadow-strong: 0 0 22px rgba(184, 145, 255, 0.46), 0 0 44px rgba(126, 62, 255, 0.18);
+  --radius-phone: 26px;
+  --ui-gap: 12px;
+  --font-ui: Arial, Helvetica, sans-serif;
+
+  --green: #b371fa;
+  --blue: #97b3ff;
+  --orange: #f9e1f6;
+  --pink: #f2a8ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-ui);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(180,120,255,.18), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(126,62,255,.12), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(255,130,200,.08), transparent 38%),
+    linear-gradient(180deg, #1b0828 0%, #120019 52%, #0c0013 100%);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  mix-blend-mode: screen;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  opacity: .7;
+}
+
+.page-shell {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 26px 16px 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.top-chip,
+.top-link,
+.chip,
+.warning,
+.app-note,
+.hero-pill {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.top-chip,
+.top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: var(--bg-button);
+  box-shadow: var(--shadow);
+  color: var(--text-soft);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+
+.hero {
+  position: relative;
+  border-radius: calc(var(--radius-phone) + 6px);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, rgba(22,6,34,.9), rgba(10,1,18,.94));
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+  padding: 28px 20px 24px;
+  margin-bottom: 18px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(188,141,255,.2), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(255,168,255,.1), transparent 28%);
+  pointer-events: none;
+}
+
+.hero-ui {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255,255,255,.03);
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 10px rgba(242,168,255,.9);
+}
+
+.hero-index {
+  font-size: 11px;
+  letter-spacing: .16em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  position: relative;
+  font-size: clamp(34px, 9vw, 64px);
+  line-height: .95;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+
+.hero h1 span {
+  display: block;
+  color: rgba(255,255,255,.42);
+  -webkit-text-stroke: 1px rgba(228,214,255,.32);
+}
+
+.hero p {
+  position: relative;
+  max-width: 520px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.section {
+  margin-bottom: 18px;
+  border-radius: var(--radius-phone);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(10,1,18,.96) 100%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+}
+
+.section-head-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid currentColor;
+  box-shadow: inset 0 0 14px rgba(255,255,255,.05), 0 0 18px rgba(255,255,255,.06);
+}
+
+.section-num.green,
+.section-title.green { color: var(--green); }
+
+.section-num.blue,
+.section-title.blue { color: var(--blue); }
+
+.section-num.orange,
+.section-title.orange { color: var(--orange); }
+
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.section-sub {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.section-meta {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--text-soft);
+}
+
+.section-body {
+  padding: 10px;
+}
+
+.card,
+.app-card {
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  overflow: hidden;
+}
+
+.app-card {
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+}
+
+.card:last-child,
+.app-card:last-child {
+  margin-bottom: 0;
+}
+
+.card::before,
+.app-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.06), transparent 38%);
+}
+
+.card-inner,
+.app-inner {
+  position: relative;
+  padding: 14px;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.avatar,
+.app-icon {
+  flex-shrink: 0;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.16);
+  font-weight: 800;
+  box-shadow: inset 0 0 14px rgba(255,255,255,.04), 0 0 20px rgba(0,0,0,.2);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 13px;
+}
+
+.app-icon {
+  width: 54px;
+  height: 54px;
+  font-size: 21px;
+}
+
+.tone-green {
+  color: var(--green);
+  background: rgba(120,240,197,.08);
+}
+
+.tone-blue {
+  color: var(--blue);
+  background: rgba(151,179,255,.08);
+}
+
+.tone-orange {
+  color: var(--orange);
+  background: rgba(255,190,134,.08);
+}
+
+.card-name,
+.app-name {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -.02em;
+}
+
+.card-desc,
+.app-desc {
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.app-sub {
+  color: var(--text-soft);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.warning,
+.app-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,190,134,.26);
+  background: rgba(255,190,134,.08);
+  color: var(--orange);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: var(--bg-button);
+  box-shadow: inset 0 0 12px rgba(255,255,255,.03);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  border-color: rgba(255,255,255,.24);
+}
+
+.chip-yt { color: #ff9b9b; }
+.chip-ig { color: #ffb4df; }
+.chip-tt { color: #9ed7ff; }
+.chip-app { color: var(--green); }
+.chip-web { color: #ddd0ff; }
+
+.footer {
+  border-radius: var(--radius-phone);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, rgba(16,3,27,.9), rgba(9,1,16,.95));
+  box-shadow: var(--shadow);
+  padding: 16px;
+  text-align: center;
+}
+
+.footer p {
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footer strong {
+  color: var(--text-main);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp .5s ease forwards;
+}
+
+.delay-1 { animation-delay: .04s; }
+.delay-2 { animation-delay: .12s; }
+.delay-3 { animation-delay: .2s; }
+.delay-4 { animation-delay: .28s; }
+.delay-5 { animation-delay: .36s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell { padding: 14px 10px 42px; }
+  .hero { padding: 20px 16px 18px; }
+  .hero h1 { font-size: clamp(30px, 12vw, 48px); }
+  .section-head { align-items: flex-start; flex-direction: column; }
+  .topbar { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<main class="page-shell">
+
+  <header class="hero fade-up delay-1">
+    <div class="hero-ui">
+      <div class="hero-pill"><span class="hero-dot"></span> Extension du parcours</div>
+      <div class="hero-index">Poursuivre / Décrypter / Vérifier</div>
+    </div>
+    <h1>Aller <span>plus loin</span></h1>
+    <p>Tu viens de voir comment une vidéo peut orienter ton regard. Ici, tu peux retrouver des comptes, des formats et des outils pour continuer à t’informer, croiser tes sources et développer ton esprit critique.</p>
+  </header>
+
+  <section class="section fade-up delay-2" id="sources">
+    <div class="section-head">
+      <div class="section-head-left">
+        <div class="section-num green">01</div>
+        <div>
+          <div class="section-title green">S’informer</div>
+          <div class="section-sub">Comprendre le quoi</div>
+        </div>
+      </div>
+      <div class="section-meta">Comptes et médias accessibles</div>
+    </div>
+
+    <div class="section-body">
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-green">HD</div>
+            <div>
+              <div class="card-name">Hugo Décrypte</div>
+              <p class="card-desc">Référence de l’actu vulgarisée pour les jeunes, présente sur plusieurs plateformes.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/@hugodecrypteactus" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/hugodecrypte" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chip chip-tt" href="https://www.tiktok.com/@hugodecrypte" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-green">GG</div>
+            <div>
+              <div class="card-name">Gaspard G</div>
+              <p class="card-desc">Actu et politique vulgarisées. Une entrée accessible pour comprendre les sujets sans jargon.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/channel/UCI-8QMy9n3I5Pv6mTmXoAXA" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/gaspard_g" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-green">ÉL</div>
+            <div>
+              <div class="card-name">Élan Média</div>
+              <p class="card-desc">Société, travail, enjeux contemporains : des formats courts pour élargir le cadre.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/@elan.media_" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/elan.media" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-green">AR</div>
+            <div>
+              <div class="card-name">Arte</div>
+              <p class="card-desc">Des formats visuels solides pour relier culture, géopolitique et enjeux de société.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/@arte" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/artefr" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chip chip-tt" href="https://www.tiktok.com/@artefr" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-green">BR</div>
+            <div>
+              <div class="card-name">Brut / Konbini</div>
+              <p class="card-desc">Des formats émotionnels efficaces pour capter l’attention. Justement, il faut les regarder avec recul.</p>
+            </div>
+          </div>
+          <div class="warning">À regarder avec recul</div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/@BrutFR" target="_blank" rel="noopener noreferrer">Brut YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/brutofficiel" target="_blank" rel="noopener noreferrer">Brut Instagram</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section fade-up delay-3">
+    <div class="section-head">
+      <div class="section-head-left">
+        <div class="section-num blue">02</div>
+        <div>
+          <div class="section-title blue">Décrypter</div>
+          <div class="section-sub">Comprendre le comment</div>
+        </div>
+      </div>
+      <div class="section-meta">Rhétorique / biais / influence</div>
+    </div>
+
+    <div class="section-body">
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-blue">EC</div>
+            <div>
+              <div class="card-name">L’Esprit Critique</div>
+              <p class="card-desc">Pour comprendre les biais cognitifs, les mécanismes d’influence et la manière dont on construit une opinion.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/channel/UCxSeJKYcO_4G_VrOlFykbSA" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/lesprit.critique" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-blue">CV</div>
+            <div>
+              <div class="card-name">Clément Viktorovitch</div>
+              <p class="card-desc">Une excellente porte d’entrée pour analyser la rhétorique politique, les formulations et les stratégies de discours.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/@Clemovitch" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/clemovitch" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-blue">SP</div>
+            <div>
+              <div class="card-name">Simon Puech</div>
+              <p class="card-desc">Pour aller plus loin sur les mécaniques de discours, la manipulation et les procédés argumentatifs.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/channel/UCMQSwUNSnMOP4IRysfeg8EA" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/spuech" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chip chip-tt" href="https://www.tiktok.com/@spuech" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-blue">MG</div>
+            <div>
+              <div class="card-name">Mister Geopolitix</div>
+              <p class="card-desc">Géopolitique, terrain, conflits et enjeux internationaux expliqués avec des formats très accessibles.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-yt" href="https://www.youtube.com/channel/UCX9lsdsTKfTi1eqoyL-RS-Q" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/mistergeopolitix" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chip chip-tt" href="https://www.tiktok.com/@mistergeopolitix" target="_blank" rel="noopener noreferrer">TikTok</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-top">
+            <div class="avatar tone-blue">BP</div>
+            <div>
+              <div class="card-name">Bon Pote</div>
+              <p class="card-desc">Un exemple utile pour comprendre la vérification des sources, la désinformation et la rigueur argumentative.</p>
+            </div>
+          </div>
+          <div class="chips">
+            <a class="chip chip-web" href="https://bonpote.com" target="_blank" rel="noopener noreferrer">Site web</a>
+            <a class="chip chip-ig" href="https://www.instagram.com/bonpote" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </article>
+
+  <section class="section fade-up delay-4">
+    <div class="section-head">
+      <div class="section-head-left">
+        <div class="section-num orange">03</div>
+        <div>
+          <div class="section-title orange">Expérimenter</div>
+          <div class="section-sub">Passer à l’action</div>
+        </div>
+      </div>
+      <div class="section-meta">Outils concrets</div>
+    </div>
+
+    <div class="section-body">
+      <article class="app-card">
+        <div class="app-inner">
+          <div class="app-header">
+            <div class="app-icon tone-orange">EL</div>
+            <div>
+              <div class="app-name">Elyze</div>
+              <div class="app-sub">Gratuit · Sans pub · Sans collecte de données</div>
+            </div>
+          </div>
+          <p class="app-desc">Découvre des propositions politiques via une interface de comparaison simple. Une manière de sortir du pur réflexe partisan et de te confronter directement aux idées.</p>
+          <div class="app-note">Vérifie que la version active correspond bien à l’élection en cours</div>
+          <div class="chips">
+            <a class="chip chip-app" href="https://apps.apple.com/fr/app/elyze/id1598620925" target="_blank" rel="noopener noreferrer">App Store</a>
+            <a class="chip chip-app" href="https://play.google.com/store/apps/details?id=com.lesengages.elyze" target="_blank" rel="noopener noreferrer">Google Play</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <div class="app-inner">
+          <div class="app-header">
+            <div class="app-icon tone-blue">AG</div>
+            <div>
+              <div class="app-name">Agora — Citoyens & Gouv</div>
+              <div class="app-sub">Application officielle · Gratuit</div>
+            </div>
+          </div>
+          <p class="app-desc">Un outil institutionnel pour suivre certaines consultations citoyennes, poser des questions et voir comment le lien entre citoyens et gouvernement peut être organisé.</p>
+          <div class="chips">
+            <a class="chip chip-app" href="https://apps.apple.com/fr/app/agora-citoyens-gouv/id6449599025" target="_blank" rel="noopener noreferrer">App Store</a>
+            <a class="chip chip-app" href="https://play.google.com/store/apps/details?id=fr.gouv.agora" target="_blank" rel="noopener noreferrer">Google Play</a>
+            <a class="chip chip-web" href="https://www.agora.gouv.fr" target="_blank" rel="noopener noreferrer">Site web</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
